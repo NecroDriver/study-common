@@ -1,1 +1,1 @@
-'# study-common' 
+# study-common 
