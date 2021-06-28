@@ -1,4 +1,15 @@
+import java.math.BigInteger;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -8,11 +19,28 @@ import java.util.List;
  * @version 1.0.0
  **/
 public class Test {
-    public static void main(String[] args) {
-        List<Test.CourseSystemCategory> list = new ArrayList<>();
-        list.add(Test.CourseSystemCategory.LaborWork);
-        System.out.println(list);
-        System.out.println(list.contains(Test.CourseSystemCategory.LaborWork));
+    public static void main(String[] args) throws UnknownHostException, ParseException {
+//        List<Test.CourseSystemCategory> list = new ArrayList<>();
+//        list.add(Test.CourseSystemCategory.LaborWork);
+//        System.out.println(list.get(1));
+//        System.out.println(list.contains(Test.CourseSystemCategory.LaborWork));
+
+//        int pages = (3999-1)/1000 + 1;
+//        System.out.println(pages);
+
+        Date now = new Date();
+        System.out.println(now.getTime());
+        System.out.println(System.currentTimeMillis());
+        System.out.println(now);
+        Date date = new Date(now.getTime() + 1000 * 60);
+        System.out.println(date);
+        System.out.println(date.getTime());
+    }
+
+    public static BigInteger getNanos(Instant instant) {
+        return BigInteger.valueOf(instant.getEpochSecond())
+                .multiply(BigInteger.valueOf(1000_000_000L))
+                .add(BigInteger.valueOf(instant.getNano()));
     }
 
     /**
@@ -92,6 +120,15 @@ public class Test {
 
         public Integer getIndex() {
             return index;
+        }
+
+        public static boolean exist(String name) {
+            for (CourseSystemCategory bizAction : CourseSystemCategory.values()) {
+                if (bizAction.name().equals(name)) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
