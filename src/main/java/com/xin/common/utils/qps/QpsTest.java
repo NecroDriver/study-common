@@ -32,9 +32,9 @@ public class QpsTest {
         for (Thread thread : threadList) {
             thread.start();
         }
-        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
-        executorService.scheduleWithFixedDelay(() -> {
-            System.out.println(rollingNumber.sum());
-        }, 0, 1, TimeUnit.SECONDS);
+//        ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
+//        executorService.scheduleWithFixedDelay(() -> {
+//            System.out.println(rollingNumber.sum());
+//        }, 0, 1, TimeUnit.SECONDS);
     }
 }
